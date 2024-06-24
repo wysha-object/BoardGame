@@ -16,7 +16,7 @@ public class Client implements Runnable {
     public void run() {
         try {
             socket= serverSocket.accept();
-            executorService.execute(this);
+            executorService.execute(new Client());
             logger.info("accept"+socket.getInetAddress());
             Random random=new Random();
             int i = random.nextInt();

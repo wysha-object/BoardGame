@@ -2,7 +2,6 @@ package cn.com.wysha.cards;
 
 import cn.com.wysha.Main;
 import cn.com.wysha.game.Game;
-import cn.com.wysha.online.Room;
 
 import javax.swing.*;
 
@@ -31,6 +30,7 @@ public class RoomListPanel{
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
+
         });
         joinButton.addActionListener(e -> {
             try {
