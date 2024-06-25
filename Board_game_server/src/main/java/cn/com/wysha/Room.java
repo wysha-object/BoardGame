@@ -9,7 +9,7 @@ public class Room {
     public final String name;
     public final Client owner;
     public Client guest;
-    public Integer GID;
+    public Integer GID=null;
     public final Integer width;
     public final Integer height;
 

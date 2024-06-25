@@ -35,18 +35,18 @@ public class RoomListPanel{
         });
         joinButton.addActionListener(e -> {
             try {
-                System.out.println("已进入房间");
-                Main.mainForm.setEnabled(false);
+                Main.mainForm.setVisible(false);
                 Main.client.write("join_Room");
                 Main.client.write(String.valueOf(index));
                 Main.client.write(String.valueOf(Main.client.ID));
                 String name=Main.client.read();
+                String ownerName=Main.client.read();
+                Integer ID= Integer.valueOf(Main.client.read());
                 int width=Integer.parseInt(Main.client.read());
                 int height=Integer.parseInt(Main.client.read());
                 Game game=new Game(width,height);
 
-                GameView gameView = new GameView();
-                gameView.setVisible(true);
+                new GameView(name,ID,ownerName,Main.name,game,false);
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }

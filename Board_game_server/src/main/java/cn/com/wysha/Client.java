@@ -3,6 +3,7 @@ package cn.com.wysha;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 import static cn.com.wysha.Main.*;
@@ -10,6 +11,7 @@ import static cn.com.wysha.Main.*;
 public class Client implements Runnable {
     public static ArrayList<Client> clients = new ArrayList<>();
     public Integer id;
+    public String name;
     public Socket socket;
     public Room room;
     public boolean run=true;
@@ -35,6 +37,7 @@ public class Client implements Runnable {
             this.id = i;
             clients.add(this);
             write(String.valueOf(this.id));
+            name=read();
             while (run){
                 String string=read();
                 switch(string){
@@ -65,7 +68,7 @@ public class Client implements Runnable {
                         }
                         Client c=null;
                         for (Client client:Client.clients){
-                            if (client.id==id){
+                            if (Objects.equals(client.id, room.GID)){
                                 c = client;
                                 break;
                             }
@@ -73,7 +76,7 @@ public class Client implements Runnable {
                         room.guest=c;
                         try {
                             write("GID");
-                            owner.write(String.valueOf(room.GID));
+                            owner.write(String.valueOf(c.name));
                         } catch (Exception e) {
                             throw new RuntimeException(e);
                         }
@@ -93,8 +96,11 @@ public class Client implements Runnable {
                         Room.rooms.get(index).setGID(Integer.valueOf(read()));
                         this.room= Room.rooms.get(index);
                         write(String.valueOf(room.name));
+                        write(String.valueOf(room.owner.name));
+                        write(String.valueOf(room.id));
                         write(String.valueOf(room.width));
                         write(String.valueOf(room.height));
+                        Thread.sleep(2000);
                         Client owner=room.owner;
                         Client guest=room.guest;
                         game(guest, owner);
@@ -106,6 +112,7 @@ public class Client implements Runnable {
             throw new RuntimeException(e);
         } finally {
             clients.remove(this);
+            assert room != null;
             room.removeClient(this);
         }
     }
@@ -113,8 +120,11 @@ public class Client implements Runnable {
     private void game(Client user, Client rival) throws Exception {
         boolean winner=false;
         while (true){
-            if (user.read().equals("win")){
+            String string=user.read();
+            if (string.equals("win")){
                 winner=true;
+            }else if (string.equals("lost")){
+                return;
             }
             int x = Integer.parseInt(user.read());
             int y = Integer.parseInt(user.read());
@@ -122,8 +132,9 @@ public class Client implements Runnable {
                 rival.write("lost");
                 rival.write(String.valueOf(x));
                 rival.write(String.valueOf(y));
-                break;
+                return;
             }else {
+                rival.write("test");
                 rival.write(String.valueOf(x));
                 rival.write(String.valueOf(y));
             }

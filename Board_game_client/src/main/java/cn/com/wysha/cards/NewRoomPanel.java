@@ -14,11 +14,9 @@ public class NewRoomPanel{
     private JTextField name;
 
     public NewRoomPanel() {
-
         startButton.addActionListener(e -> {
-            System.out.println("等待对手进入房间");
-            Main.mainForm.setEnabled(false);
-            new Room(name.getText(),Main.client.ID, (Integer) width.getValue(), (Integer) height.getValue());
+            Main.mainForm.setVisible(false);
+            new Room(name.getText(), (Integer) width.getValue(), (Integer) height.getValue());
         });
     }
 }

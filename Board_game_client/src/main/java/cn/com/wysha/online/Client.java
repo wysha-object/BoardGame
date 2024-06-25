@@ -1,5 +1,7 @@
 package cn.com.wysha.online;
 
+import cn.com.wysha.Main;
+
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
@@ -10,6 +12,7 @@ public class Client {
         this.socket = socket;
         try {
             ID= Integer.valueOf(read());
+            write(Main.name);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
