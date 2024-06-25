@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2024-06-24T18:07:29.317878400Z</date>
-  <millis>1719252449317</millis>
-  <nanos>878400</nanos>
+  <date>2024-06-25T12:36:37.702796700Z</date>
+  <millis>1719318997702</millis>
+  <nanos>796700</nanos>
   <sequence>0</sequence>
   <logger>Main</logger>
   <level>INFO</level>
@@ -14,9 +14,9 @@
   <message>start</message>
 </record>
 <record>
-  <date>2024-06-24T18:07:32.296026400Z</date>
-  <millis>1719252452296</millis>
-  <nanos>26400</nanos>
+  <date>2024-06-25T12:36:39.970630400Z</date>
+  <millis>1719318999970</millis>
+  <nanos>630400</nanos>
   <sequence>1</sequence>
   <logger>Main</logger>
   <level>INFO</level>
@@ -26,27 +26,39 @@
   <message>server start</message>
 </record>
 <record>
-  <date>2024-06-24T18:07:34.900285200Z</date>
-  <millis>1719252454900</millis>
-  <nanos>285200</nanos>
+  <date>2024-06-25T12:36:42.681007500Z</date>
+  <millis>1719319002681</millis>
+  <nanos>7500</nanos>
   <sequence>2</sequence>
   <logger>Main</logger>
   <level>INFO</level>
   <class>cn.com.wysha.Client</class>
   <method>run</method>
-  <thread>31</thread>
+  <thread>33</thread>
   <message>accept/127.0.0.1</message>
 </record>
 <record>
-  <date>2024-06-24T18:07:41.219752400Z</date>
-  <millis>1719252461219</millis>
-  <nanos>752400</nanos>
+  <date>2024-06-25T12:36:49.178232400Z</date>
+  <millis>1719319009178</millis>
+  <nanos>232400</nanos>
   <sequence>3</sequence>
   <logger>Main</logger>
   <level>INFO</level>
   <class>cn.com.wysha.Client</class>
   <method>run</method>
-  <thread>33</thread>
+  <thread>35</thread>
+  <message>accept/127.0.0.1</message>
+</record>
+<record>
+  <date>2024-06-25T12:36:57.218302900Z</date>
+  <millis>1719319017218</millis>
+  <nanos>302900</nanos>
+  <sequence>4</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>cn.com.wysha.Client</class>
+  <method>run</method>
+  <thread>36</thread>
   <message>accept/127.0.0.1</message>
 </record>
 </log>

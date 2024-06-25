@@ -7,8 +7,8 @@ public class Room {
     public static ArrayList<Room> rooms = new ArrayList<>();
     public final int id;
     public final String name;
-    private final Client owner;
-    private final Client guest;
+    public final Client owner;
+    public Client guest;
     public Integer GID;
     public final Integer width;
     public final Integer height;
@@ -33,38 +33,19 @@ public class Room {
         this.id = i;
         this.name = name;
         this.owner = owner;
-        try {
-            owner.write(String.valueOf(id));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        while (true){
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            if (GID!=null){
-                break;
-            }
-        }
-        Client c=null;
-        for (Client client:Client.clients){
-            if (client.id==id){
-                c = client;
-                break;
-            }
-        }
-        this.guest=c;
-        try {
-            owner.write(String.valueOf(GID));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        System.out.println(666);
     }
     public void setGID(Integer GID){
         this.GID = GID;
+    }
+    public void removeClient(Client client){
+        if (client == guest||client==owner){
+            rooms.remove(this);
+            try {
+                guest.socket.close();
+                owner.socket.close();
+            } catch (Exception ignored) {
+            }
+        }
     }
     @Override
     public String toString() {

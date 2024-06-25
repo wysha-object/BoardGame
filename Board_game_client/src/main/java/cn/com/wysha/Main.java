@@ -9,6 +9,8 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.io.*;
 import java.net.Socket;

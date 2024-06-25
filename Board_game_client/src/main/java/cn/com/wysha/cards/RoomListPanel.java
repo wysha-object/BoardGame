@@ -1,5 +1,6 @@
 package cn.com.wysha.cards;
 
+import cn.com.wysha.GUI.GameView;
 import cn.com.wysha.Main;
 import cn.com.wysha.game.Game;
 
@@ -43,7 +44,9 @@ public class RoomListPanel{
                 int width=Integer.parseInt(Main.client.read());
                 int height=Integer.parseInt(Main.client.read());
                 Game game=new Game(width,height);
-                System.out.println(666);
+
+                GameView gameView = new GameView();
+                gameView.setVisible(true);
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }

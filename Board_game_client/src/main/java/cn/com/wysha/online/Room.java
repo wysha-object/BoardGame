@@ -1,5 +1,6 @@
 package cn.com.wysha.online;
 
+import cn.com.wysha.GUI.GameView;
 import cn.com.wysha.Main;
 import cn.com.wysha.game.Game;
 
@@ -20,8 +21,17 @@ public class Room {
             Main.client.write(String.valueOf(width));
             Main.client.write(String.valueOf(height));
             ID= Integer.parseInt(Main.client.read());
+
+            while (true){
+                if (Main.client.read().equals("GID")){
+                    break;
+                }
+            }
+
             guestID = Integer.parseInt(Main.client.read());
-            System.out.println(666);
+
+            GameView gameView = new GameView();
+            gameView.setVisible(true);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
