@@ -12,6 +12,7 @@ public class SetPanel {
     private JTextField nameTextField;
     private JLabel name;
     private JTextField serverPortTextField;
+    private JButton save;
 
     public SetPanel(){
         if (Main.client!=null){
@@ -21,7 +22,11 @@ public class SetPanel {
         }
         serverIPTextField.setText(Main.serverIP);
         serverPortTextField.setText(String.valueOf(Main.serverPort));
-        portTextField.setText(Main.port);
         nameTextField.setText(Main.name);
+        save.addActionListener(e->{
+            Main.serverIP=serverIPTextField.getText();
+            Main.serverPort=Integer.parseInt(portTextField.getText());
+            Main.name=nameTextField.getText();
+        });
     }
 }

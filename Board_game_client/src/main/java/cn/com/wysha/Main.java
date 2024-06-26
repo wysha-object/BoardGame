@@ -20,10 +20,9 @@ public class Main {
     public final static MainForm mainForm;
     private static final String DATA_FILE="./data.xml";
     public static final Client client;
-    public static final String name;
-    public static final String serverIP;
-    public static final Integer serverPort;
-    public static final String port;
+    public static String name;
+    public static String serverIP;
+    public static Integer serverPort;
     static {
         Client c;
         File file=new File(DATA_FILE);
@@ -35,7 +34,6 @@ public class Main {
                 name=settings.elementText("name");
                 serverIP=settings.elementText("serverIP");
                 serverPort= Integer.valueOf(settings.elementText("serverPort"));
-                port=settings.elementText("port");
             } catch (DocumentException e) {
                 throw new RuntimeException(e);
             }
@@ -43,7 +41,6 @@ public class Main {
             name = "user"+new Random().nextInt();
             serverIP="127.0.0.1";
             serverPort=7700;
-            port = "7800";
         }
         try {
             c =new Client(new Socket(serverIP,serverPort));
@@ -73,7 +70,6 @@ public class Main {
                     settings.addElement("name").setText(name);
                     settings.addElement("serverIP").setText(serverIP);
                     settings.addElement("serverPort").setText(String.valueOf(serverPort));
-                    settings.addElement("port").setText(port);
                     xmlWriter.write(document);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
