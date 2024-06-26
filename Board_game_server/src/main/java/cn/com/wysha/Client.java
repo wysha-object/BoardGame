@@ -125,6 +125,11 @@ public class Client implements Runnable {
                 winner=true;
             }else if (string.equals("lost")){
                 return;
+            }else if (string.equals("stop")){
+                rival.write("stop");
+                return;
+            }else if (string.equals("stopEND")){
+                return;
             }
             int x = Integer.parseInt(user.read());
             int y = Integer.parseInt(user.read());

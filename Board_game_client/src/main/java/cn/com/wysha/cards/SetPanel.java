@@ -14,7 +14,11 @@ public class SetPanel {
     private JTextField serverPortTextField;
 
     public SetPanel(){
-        name.setText("当前服务器分配给本机的ID:"+ Main.client.ID);
+        if (Main.client!=null){
+            name.setText("当前服务器分配给本机的ID:"+ Main.client.ID);
+        }else {
+            name.setText("离线模式");
+        }
         serverIPTextField.setText(Main.serverIP);
         serverPortTextField.setText(String.valueOf(Main.serverPort));
         portTextField.setText(Main.port);

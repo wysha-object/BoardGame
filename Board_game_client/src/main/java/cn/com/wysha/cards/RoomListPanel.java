@@ -35,7 +35,7 @@ public class RoomListPanel{
         });
         joinButton.addActionListener(e -> {
             try {
-                Main.mainForm.setVisible(false);
+                Main.mainForm.setEnabled(false);
                 Main.client.write("join_Room");
                 Main.client.write(String.valueOf(index));
                 Main.client.write(String.valueOf(Main.client.ID));
