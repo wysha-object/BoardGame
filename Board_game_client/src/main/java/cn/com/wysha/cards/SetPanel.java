@@ -8,7 +8,6 @@ public class SetPanel {
     public final String cardName=this.getClass().getName();
     public JPanel panel;
     private JTextField serverIPTextField;
-    private JTextField portTextField;
     private JTextField nameTextField;
     private JLabel name;
     private JTextField serverPortTextField;
@@ -25,7 +24,7 @@ public class SetPanel {
         nameTextField.setText(Main.name);
         save.addActionListener(e->{
             Main.serverIP=serverIPTextField.getText();
-            Main.serverPort=Integer.parseInt(portTextField.getText());
+            Main.serverPort=Integer.parseInt(serverPortTextField.getText());
             Main.name=nameTextField.getText();
         });
     }
