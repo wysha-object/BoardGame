@@ -21,20 +21,27 @@ public class Game {
                 return -1;
             }else {
                 grid[x][y] = id;
-                for (int xx = -1; xx < 2; xx++) {
-                    for (int yy = -1; yy < 2; yy++) {
-                        if (xx == 0 && yy == 0) continue;
-                        int xxx=x;
-                        int yyy=y;
-                        for (int i = 0; i < 4; i++) {
-                            xxx+=xx;
-                            yyy+=yy;
-                            if (xxx<0||xxx>=getW()||yyy<0||yyy>=getH()) break;
-                            if (grid[xxx][yyy] != id){
-                                break;
-                            }
-                            if (i==3){
-                                return 1;
+                for (int X=0;X<getW();X++){
+                    for (int Y=0;Y<getH();Y++){
+                        if (grid[X][Y] == 0){
+                            continue;
+                        }
+                        for (int xx = -1; xx < 2; xx++) {
+                            for (int yy = -1; yy < 2; yy++) {
+                                if (xx == 0 && yy == 0) continue;
+                                int xxx=X;
+                                int yyy=Y;
+                                for (int i = 0; i < 4; i++) {
+                                    xxx+=xx;
+                                    yyy+=yy;
+                                    if (xxx<0||xxx>=getW()||yyy<0||yyy>=getH()) break;
+                                    if (grid[xxx][yyy] != id){
+                                        break;
+                                    }
+                                    if (i==3){
+                                        return 1;
+                                    }
+                                }
                             }
                         }
                     }
